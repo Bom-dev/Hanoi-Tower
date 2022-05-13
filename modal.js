@@ -16,9 +16,13 @@ const modalH1 = document.createElement("h1")
 modalH1.innerText = "What is Tower of Hanoi?"
 modalTextbox.appendChild(modalH1)
 
-const paragraph = document.createElement("p")
-paragraph.innerHTML = "Tower of Hanoi is a mathematical puzzle where the objective is to move a stack of discs from one rod to another. <br />There are three rules:<li>Only one disk can be moved at a time</li><li>Every move involves taking the top disk from one of the stacks and placing it on top of another stack</li><li>No disk can be put on top of a smaller disk</li>"
-modalTextbox.appendChild(paragraph)
+const paragraph1 = document.createElement("p")
+paragraph1.innerHTML = "Tower of Hanoi is a mathematical puzzle where the objective is to move a stack of discs from one rod to another."
+modalTextbox.appendChild(paragraph1)
+
+const paragraph2 = document.createElement("p")
+paragraph2.innerHTML = "There are three rules:<ul><li>Only one disk can be moved at a time.</li><li>You can only move the top disc in a stack.</li><li>No disk may be placed on top of a smaller disk.</li></ul>"
+modalTextbox.appendChild(paragraph2)
 
 const modalFooter = document.createElement("div")
 modalFooter.setAttribute("id", "modal-footer")
