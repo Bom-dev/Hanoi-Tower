@@ -3,6 +3,7 @@ body {
     border: solid 5px #123;
     margin: 0 auto;
     margin: 10px;
+    height: 200%;
 }
 
 #modal {
@@ -66,4 +67,9 @@ button {
     cursor: pointer;
     height: 1.5rem;
     background: #123;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #6495ed;
 }
