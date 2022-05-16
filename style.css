@@ -75,3 +75,7 @@ button {
 .activeDisk {
     background-color: #6495ed;
 }
+
+.hidden {
+    display: none;
+}
