@@ -3,10 +3,15 @@ const displayScore = document.querySelector("#score")
 const moves = document.querySelector("#moves")
 const restart = document.querySelector("#restart")
 const stack = document.querySelector("#stack")
-// const scroll = document.querySelector("#scroll")
+const scroll = document.querySelector("#scroll")
 
 let score = localStorage.getItem("score")
 let move = 0
+let input = 3
+
+
+// Set color palette to use
+const colors = ["#fe938c", "#e6b89c", "#ead2ac", "#9cafb7", "#4281a4", "#22333b"]
 
 
 // Create stocks inside stock div
@@ -41,26 +46,40 @@ function stackClicked(event) {
 
 
 // Create select to choose number of disks
-// const select = document.createElement("select")
-// scroll.appendChild(select)
+const select = document.createElement("select")
+scroll.appendChild(select)
+const start = document.createElement("button")
+start.innerText = "Start!"
+scroll.appendChild(start)
 
-// for (i=3; i<10; i++) {
-//     const option = document.createElement("option")
-//     option.setAttribute("value", i)
-//     option.innerText = `${i} Disks`
-//     select.appendChild(option)
-// }
+for (i=3; i<7; i++) {
+    const option = document.createElement("option")
+    option.setAttribute("value", i)
+    option.innerText = `${i} Disks`
+    select.appendChild(option)
+}
 
 
-// Set disks' number the user choose
-let input = 3
+// Create disks and set attribute & styles
+start.addEventListener("click", setting)
+
+function setting() {
+    stacks[0].innerHTML = ''
+    scroll.classList.add("hidden")
+    input = select.value
+    let newMinimum = Math.pow(2, input) - 1
+    minimum = newMinimum
     for (i=0; i<input; i++) {
-        const items = document.createElement("div")
-        const wi = ((i + 1) * 13.5) + "%"
+        items = document.createElement("div")
+        const wi = ((i + 1) * 12.5) + "%"
         items.setAttribute("id", i)
         items.setAttribute("class", "disks")
+        items.addEventListener("click", diskClicked)
+        items.style.backgroundColor = colors[i]
         items.style.width = wi
         stacks[0].appendChild(items)
+        reset()
+}
 }
 
 
@@ -101,8 +120,8 @@ function winning() {
 
 // Update board 
 function updateBoard() {
-    displayScore.innerHTML = `<h3>Score: ${localStorage.getItem("score")}</h3>`
-    moves.innerHTML = `<h3>Your Moves: ${move} | Minimum Moves: ${minimum}</h3>`
+    displayScore.innerHTML = `<h3>Score: <span>${localStorage.getItem("score")}</span></h3>`
+    moves.innerHTML = `<h3>Your Moves: <span>${move}</span> | Minimum Moves: <span>${minimum}</span></h3>`
 }
 updateBoard()
 
@@ -112,7 +131,12 @@ function reset() {
     disks.forEach(disk => {
         stack.childNodes[0].appendChild(disk)
     })
+    stacks[1].innerHTML = ''
+    stacks[2].innerHTML = ''
+    stack.childNodes[0].classList.remove("activestack")
+    stack.childNodes[0].childNodes[0].classList.remove("activeDisk")
     move = 0
     updateBoard()
+    scroll.classList.remove("hidden")
 }
 restart.addEventListener("click", reset)

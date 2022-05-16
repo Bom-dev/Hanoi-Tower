@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Share+Tech+Mono&display=swap');
+
+/* font-family: 'Cutive Mono', monospace;
+font-family: 'Share Tech Mono', monospace; */
+
 body {
     text-align: center;
-    border: solid 5px #123;
+    border: solid 5px #4281a4;
     margin: 0 auto;
     margin: 10px;
     height: 200%;
+    font-family: 'Cutive Mono', monospace;
+}
+
+h1 {
+    font-family: 'Share Tech Mono', monospace;
+    color: #22333b;
 }
 
 #modal {
@@ -29,18 +40,23 @@ body {
 }
 
 #modal-footer {
-	text-align: right;
+	text-align: center;
 }
 
 button {
 	padding: 14px 18px;
-	background-color: #123;
+	background-color: #fe938c;
 	border: none;
 	outline: none;
 	border-radius: 3px;
 	color: white;
 	cursor: pointer;
     margin: 20px;
+    font-family: 'Cutive Mono', monospace;
+}
+
+button:active {
+    transform: translate(0, 2px);
 }
 
 #stack {
@@ -52,7 +68,7 @@ button {
 
 .stacks {
     background-color: #fff;
-    border: solid 5px #123;
+    border: solid 5px #4281a4;
     padding: 10px;
     text-align: center;
     width: 80%;
@@ -67,15 +83,21 @@ button {
 
 .disks {
     height: 1.5rem;
-    background: #123;
+    background: #22333b;
     cursor: pointer;
     margin-bottom: 3px;
 }
 
 .activeDisk {
-    background-color: #6495ed;
+    background-color: #22333b;
+    transform: translate(0, -1.5rem);
+    animation: pop 300ms ease-out 1;
 }
 
 .hidden {
     display: none;
+}
+
+span {
+    text-decoration: underline;
 }
