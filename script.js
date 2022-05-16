@@ -28,12 +28,13 @@ function stackClicked(event) {
     if (clickedStack !== activeStack) {
         const activeDisk = activeStack.childNodes[0]
         clickedStack.prepend(activeDisk)
-        clickedStack.classList.remove("activeStack")
+        activeStack.classList.remove("activeStack")
         activeDisk.classList.remove("activeDisk")
+        move++
+        updateBoard()
     }
 
 }
-
 
 
 // Activate disks when the user choose 
@@ -69,5 +70,9 @@ updateBoard()
 
 // Set restart button 
 restart.addEventListener("click", () => {
-    console.log("Restart button is clicked")
+    disks.forEach(disk => {
+        stack.childNodes[0].appendChild(disk)
+    })
+    move = 0
+    updateBoard()
 })
