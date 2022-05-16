@@ -6,7 +6,6 @@ const stack = document.querySelector("#stack")
 
 let score = 0
 let move = 0
-let minimum = 15
 
 
 // Move active disk to other stack
@@ -36,16 +35,19 @@ function stackClicked(event) {
 
 }
 
+let input = 6
 
 // Activate disks when the user choose 
-for (i=0; i<6; i++) {
+for (i=0; i<input; i++) {
     const items = document.createElement("div")
+    const wi = ((i + 1) * 13.5) + "%"
     items.setAttribute("id", i)
     items.setAttribute("class", "disks")
-    items.style.width = "100%"
+    items.style.width = wi
     stacks[0].appendChild(items)
 }
 const disks = document.querySelectorAll(".disks")
+let minimum = Math.pow(2, disks.length) - 1
 
 disks.forEach(disk => {
     disk.addEventListener("click", diskClicked)
