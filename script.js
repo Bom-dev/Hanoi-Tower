@@ -111,9 +111,13 @@ function winning() {
         stack.childNodes[2].childNodes.length === parseInt(input))) {
         alert("You Win!")
         reset()
-        let newScore = parseInt(score) +100
+        // Store time based score 
+        let timeValue = parseInt(timer.innerText)
+        let timeBonus = (10 - timeValue)
+        let newScore = (parseInt(score) +100) * timeBonus
         localStorage.setItem("score", newScore)
         updateBoard()
+        startTimer()
     }
 }
 
@@ -125,8 +129,7 @@ let timerInterval;
 function startTimer() {
     clearInterval(timerInterval)
     let second = 0, minute = 0, hour = 0
-    timerInterval = setInterval(function () {
-        timer.classList.toggle('odd')
+    timerInterval = setInterval(() => {
         timer.innerHTML =
         (hour ? hour + ":" : "") + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
         second++
@@ -171,5 +174,6 @@ function reset() {
     stack.childNodes[0].childNodes[0].classList.remove("activeDisk")
     move = 0
     updateBoard()
+    startTimer()
 }
 restart.addEventListener("click", reset)
