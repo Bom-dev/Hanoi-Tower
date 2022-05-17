@@ -45,7 +45,7 @@ function stackClicked(event) {
 }
 
 
-// Create select to choose number of disks
+// Create selection to choose number of disks
 const select = document.createElement("select")
 scroll.appendChild(select)
 const start = document.createElement("button")
@@ -65,7 +65,7 @@ start.addEventListener("click", setting)
 
 function setting() {
     stacks[0].innerHTML = ''
-    scroll.classList.add("hidden")
+    // scroll.classList.add("hidden")
     input = select.value
     let newMinimum = Math.pow(2, input) - 1
     minimum = newMinimum
@@ -107,8 +107,9 @@ function diskClicked(event) {
 
 // Check winning
 function winning() {
-    if ((stack.childNodes[1].childNodes.length === input || 
-        stack.childNodes[2].childNodes.length === input)) {
+    input = select.value
+    if ((stack.childNodes[1].childNodes.length === parseInt(input) || 
+        stack.childNodes[2].childNodes.length === parseInt(input))) {
         alert("You Win!")
         reset()
         let newScore = parseInt(score) +100
@@ -128,15 +129,30 @@ updateBoard()
 
 // Set restart button 
 function reset() {
-    disks.forEach(disk => {
-        stack.childNodes[0].appendChild(disk)
-    })
+    // disks.forEach(disk => {
+    //     stack.childNodes[0].appendChild(disk)
+    // })
+    stacks[0].innerHTML = ''
+    // scroll.classList.add("hidden")
+    input = select.value
+    let newMinimum = Math.pow(2, input) - 1
+    minimum = newMinimum
+    for (i=0; i<input; i++) {
+        items = document.createElement("div")
+        const wi = ((i + 1) * 12.5) + "%"
+        items.setAttribute("id", i)
+        items.setAttribute("class", "disks")
+        items.addEventListener("click", diskClicked)
+        items.style.backgroundColor = colors[i]
+        items.style.width = wi
+        stacks[0].appendChild(items)
+    }
     stacks[1].innerHTML = ''
     stacks[2].innerHTML = ''
     stack.childNodes[0].classList.remove("activestack")
     stack.childNodes[0].childNodes[0].classList.remove("activeDisk")
     move = 0
     updateBoard()
-    scroll.classList.remove("hidden")
+    // scroll.classList.remove("hidden")
 }
 restart.addEventListener("click", reset)
