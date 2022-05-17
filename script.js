@@ -64,22 +64,21 @@ for (i=3; i<7; i++) {
 start.addEventListener("click", setting)
 
 function setting() {
+    startTimer()
     stacks[0].innerHTML = ''
-    // scroll.classList.add("hidden")
     input = select.value
     let newMinimum = Math.pow(2, input) - 1
     minimum = newMinimum
     for (i=0; i<input; i++) {
         items = document.createElement("div")
-        const wi = ((i + 1) * 12.5) + "%"
+        const wi = ((i + 1) * 15) + "%"
         items.setAttribute("id", i)
         items.setAttribute("class", "disks")
         items.addEventListener("click", diskClicked)
         items.style.backgroundColor = colors[i]
         items.style.width = wi
         stacks[0].appendChild(items)
-        reset()
-}
+} reset()
 }
 
 
@@ -119,6 +118,29 @@ function winning() {
 }
 
 
+// Set timer
+const timer = document.getElementById("timer")
+let timerInterval;
+
+function startTimer() {
+    clearInterval(timerInterval)
+    let second = 0, minute = 0, hour = 0
+    timerInterval = setInterval(function () {
+        timer.classList.toggle('odd')
+        timer.innerHTML =
+        (hour ? hour + ":" : "") + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
+        second++
+        if (second == 60) {
+            minute++;
+            second = 0;
+    }
+    if (minute == 60) {
+        hour++;
+        minute = 0;
+    }
+}, 1000)}
+
+
 // Update board 
 function updateBoard() {
     displayScore.innerHTML = `<h3>Score: <span>${localStorage.getItem("score")}</span></h3>`
@@ -129,17 +151,13 @@ updateBoard()
 
 // Set restart button 
 function reset() {
-    // disks.forEach(disk => {
-    //     stack.childNodes[0].appendChild(disk)
-    // })
     stacks[0].innerHTML = ''
-    // scroll.classList.add("hidden")
     input = select.value
     let newMinimum = Math.pow(2, input) - 1
     minimum = newMinimum
     for (i=0; i<input; i++) {
         items = document.createElement("div")
-        const wi = ((i + 1) * 12.5) + "%"
+        const wi = ((i + 1) * 15) + "%"
         items.setAttribute("id", i)
         items.setAttribute("class", "disks")
         items.addEventListener("click", diskClicked)
@@ -153,6 +171,5 @@ function reset() {
     stack.childNodes[0].childNodes[0].classList.remove("activeDisk")
     move = 0
     updateBoard()
-    // scroll.classList.remove("hidden")
 }
 restart.addEventListener("click", reset)
