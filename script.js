@@ -7,7 +7,7 @@ const scroll = document.querySelector("#scroll")
 
 let score = localStorage.getItem("score")
 let move = 0
-let input = 3
+let input
 
 
 // Set color palette to use
@@ -109,7 +109,7 @@ function diskClicked(event) {
 // Check winning
 function winning() {
     input = select.value
-    if ((stack.childNodes[1].childNodes.length === stacks.length || stack.childNodes[2].childNodes.length === stacks.length)) {
+    if ((stack.childNodes[1].childNodes.length === parseInt(input) || stack.childNodes[2].childNodes.length === parseInt(input))) {
         alert("You Win!")
         reset()
         // Store time based score 
