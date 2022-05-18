@@ -69,6 +69,7 @@ function setting() {
     input = select.value
     let newMinimum = Math.pow(2, input) - 1
     minimum = newMinimum
+    scroll.classList.add("hidden")
     for (i=0; i<input; i++) {
         items = document.createElement("div")
         const wi = ((i + 1) * 15) + "%"
@@ -78,7 +79,7 @@ function setting() {
         items.style.backgroundColor = colors[i]
         items.style.width = wi
         stacks[0].appendChild(items)
-} reset()
+} 
 }
 
 
@@ -91,33 +92,33 @@ disks.forEach(disk => {
 })
 
 function diskClicked(event) {
-    const clickedDisk = event.target
-    const parent = clickedDisk.parentNode
-    const active = document.querySelectorAll(".activeStack")
-    if ((clickedDisk === parent.firstChild) && (active.length === 0)) {
+    if (scroll.classList.contains("hidden")) {
+        const clickedDisk = event.target
+        const parent = clickedDisk.parentNode
+        const active = document.querySelectorAll(".activeStack")
+        if ((clickedDisk === parent.firstChild) && (active.length === 0)) {
         clickedDisk.classList.add("activeDisk")
         clickedDisk.parentNode.classList.add("activeStack")
-    } else {
+        } else {
         clickedDisk.classList.remove("activeDisk")
         clickedDisk.parentNode.classList.remove("activeStack")
-    }
-}
+        }
+}}
 
 
 // Check winning
 function winning() {
     input = select.value
-    if ((stack.childNodes[1].childNodes.length === parseInt(input) || 
-        stack.childNodes[2].childNodes.length === parseInt(input))) {
+    if ((stack.childNodes[1].childNodes.length === stacks.length || stack.childNodes[2].childNodes.length === stacks.length)) {
         alert("You Win!")
         reset()
         // Store time based score 
         let timeValue = parseInt(timer.innerText)
         let timeBonus = (10 - timeValue)
-        let newScore = (parseInt(score) +100) * timeBonus
+        let newScore = (parseInt(score) + 100 + (10 * timeBonus))
         localStorage.setItem("score", newScore)
         updateBoard()
-        startTimer()
+        clearInterval(timerInterval)
     }
 }
 
@@ -154,6 +155,7 @@ updateBoard()
 
 // Set restart button 
 function reset() {
+    scroll.classList.remove("hidden")
     stacks[0].innerHTML = ''
     input = select.value
     let newMinimum = Math.pow(2, input) - 1
@@ -174,6 +176,6 @@ function reset() {
     stack.childNodes[0].childNodes[0].classList.remove("activeDisk")
     move = 0
     updateBoard()
-    startTimer()
+    clearInterval(timerInterval)
 }
 restart.addEventListener("click", reset)
