@@ -7,7 +7,7 @@ const scroll = document.querySelector("#scroll")
 
 let score = localStorage.getItem("score")
 let move = 0
-let input
+let input = 3
 
 
 // Set color palette to use
@@ -67,7 +67,7 @@ function setting() {
     startTimer()
     stacks[0].innerHTML = ''
     input = select.value
-    let newMinimum = Math.pow(2, input) - 1
+    let newMinimum = Math.pow(2, parseInt(input)) - 1
     minimum = newMinimum
     scroll.classList.add("hidden")
     for (i=0; i<input; i++) {
