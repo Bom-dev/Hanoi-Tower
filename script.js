@@ -146,8 +146,13 @@ function startTimer() {
 
 
 // Update board 
-function updateBoard() {
-    displayScore.innerHTML = `<h3>Score: <span>${localStorage.getItem("score")}</span></h3>`
+function updateBoard() { 
+    if (localStorage.getItem("score")) {
+        scr = localStorage.getItem("score")
+    } else {
+        scr = 0
+    }
+    displayScore.innerHTML = `<h3>Score: <span>${scr}</span></h3>`
     moves.innerHTML = `<h3>Your Moves: <span>${move}</span> | Minimum Moves: <span>${minimum}</span></h3>`
 }
 updateBoard()
