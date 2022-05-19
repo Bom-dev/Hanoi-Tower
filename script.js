@@ -115,7 +115,8 @@ function winning() {
         // Store time based score 
         let timeValue = parseInt(timer.innerText)
         let timeBonus = (10 - timeValue)
-        let newScore = (parseInt(score) + 100 + (10 * timeBonus))
+        let previousScore = parseInt(localStorage.getItem("score"))
+        let newScore = (previousScore + 100 + (10 * timeBonus))
         localStorage.setItem("score", newScore)
         updateBoard()
         clearInterval(timerInterval)
@@ -150,7 +151,7 @@ function updateBoard() {
     if (localStorage.getItem("score")) {
         scr = localStorage.getItem("score")
     } else {
-        localStorage.setItem("score", "0")
+        localStorage.setItem("score", 0)
         scr = localStorage.getItem("score")
     }
     displayScore.innerHTML = `<h3>Score: <span>${scr}</span></h3>`
