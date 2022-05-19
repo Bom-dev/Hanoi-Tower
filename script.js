@@ -150,7 +150,8 @@ function updateBoard() {
     if (localStorage.getItem("score")) {
         scr = localStorage.getItem("score")
     } else {
-        scr = "0"
+        localStorage.setItem("score", "0")
+        scr = localStorage.getItem("score")
     }
     displayScore.innerHTML = `<h3>Score: <span>${scr}</span></h3>`
     moves.innerHTML = `<h3>Your Moves: <span>${move}</span> | Minimum Moves: <span>${minimum}</span></h3>`
