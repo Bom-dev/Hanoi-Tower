@@ -16,6 +16,9 @@ HTML/CSS & JavaScript
 - As a user, I want to get a high score, so that I can move as little as possible.
 - As a user, I want to see clearly if something is clicked, so that I can use css effects to make it clear when something is being used.
 
+<img width="573" alt="Screen Shot 2022-05-18 at 11 17 21 AM" src="https://user-images.githubusercontent.com/102882638/169392139-6e3a2bdd-24e4-4fd8-a3d6-5121674a27ed.png">
+
+
 ### Goal as a developer
 - HTML / CSS
 1. Display titles / scores / message tap / refresh button. 
