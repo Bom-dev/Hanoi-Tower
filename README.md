@@ -6,7 +6,7 @@ Only one disk can be moved at a time
 Every move involves taking the top disk from one of the stacks and placing it on top of another stack
 No disk can be put on top of a smaller disk
 
-You can check it over [here](https://bom-dev.github.io/Hanoi-Tower/).
+You can check it over [here](https://bom-dev.github.io/hanoi-tower/).
 
 ### Technology
 HTML/CSS & JavaScript
