@@ -14,9 +14,9 @@ You can check it over [here](https://bom-dev.github.io/Hanoi-Tower/).
 HTML/CSS & JavaScript
 
 ### Goal as a user
-As a user, I want to move all the disks to another stack, so that I can move them one by one. 
-As a user, I want to get a high score, so that I can move as little as possible.
-As a user, I want to see clearly if something is clicked, so that I can use css effects to make it clear when something is being used.
+- As a user, I want to move all the disks to another stack, so that I can move them one by one. 
+- As a user, I want to get a high score, so that I can move as little as possible.
+- As a user, I want to see clearly if something is clicked, so that I can use css effects to make it clear when something is being used.
 
 ### Goal as a developer
 - HTML / CSS
