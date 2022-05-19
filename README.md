@@ -1,5 +1,3 @@
-# Hanoi Tower
-
 ## Tower of Hanoi
 Tower of Hanoi is a mathematical puzzle where the objective is to move a stack of discs from one rod to another. 
 
