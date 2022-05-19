@@ -1,4 +1,5 @@
 ## Tower of Hanoi
+<img width="600" alt="Tower of Hanoi Screenshot" src="https://user-images.githubusercontent.com/102882638/169392894-6e0f36b4-1aea-4323-8d4f-8730b451b760.png">
 Tower of Hanoi is a mathematical puzzle where the objective is to move a stack of discs from one rod to another. 
 
 There are three rules:
@@ -11,13 +12,13 @@ You can check it over [here](https://bom-dev.github.io/hanoi-tower/).
 ### Technology
 HTML/CSS & JavaScript
 
+### Wireframe
+<img width="600" alt="Tower of Hanoi Wireframe" src="https://user-images.githubusercontent.com/102882638/169392538-006c57b4-9b43-445b-80ab-a49287803203.png">
+
 ### Goal as a user
 - As a user, I want to move all the disks to another stack, so that I can move them one by one. 
 - As a user, I want to get a high score, so that I can move as little as possible.
 - As a user, I want to see clearly if something is clicked, so that I can use css effects to make it clear when something is being used.
-
-<img width="573" alt="Screen Shot 2022-05-18 at 11 17 21 AM" src="https://user-images.githubusercontent.com/102882638/169392139-6e3a2bdd-24e4-4fd8-a3d6-5121674a27ed.png">
-
 
 ### Goal as a developer
 - HTML / CSS
